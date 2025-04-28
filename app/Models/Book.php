@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $guarded = ['id'];
 
@@ -31,13 +31,13 @@ class Book extends Model
         });
 
         $query->when($filters['category'] ?? false, function ($query, $category) {
-            return $query->whereHas('category', fn ($query) => 
+            return $query->whereHas('category', fn ($query) =>
                 $query->where('slug', $category)
             );
         });
 
         $query->when($filters['author'] ?? false, function ($query, $author) {
-            return $query->whereHas('author', fn ($query) => 
+            return $query->whereHas('author', fn ($query) =>
                 $query->where('slug', $author)
             );
         });

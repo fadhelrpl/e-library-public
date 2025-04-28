@@ -9,7 +9,7 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class Borrow extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $guarded = ['id'];
 

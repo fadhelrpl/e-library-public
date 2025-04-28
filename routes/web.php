@@ -23,7 +23,7 @@ Route::get('/coba', function () {
 
 
 Route::get('/hall', [HallController::class, 'index']);
-Route::get('/hall/{book:slug}', [HallController::class, 'detailBook']);
+Route::get('/hall/{book:slug}', action: [HallController::class, 'detailBook']);
 Route::get('/hall/author/{author:slug}', [HallController::class, 'bookByAuthor']);
 Route::get('/hall/category/{category:slug}', [HallController::class, 'bookByCategory']);
 
