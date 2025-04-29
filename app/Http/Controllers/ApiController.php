@@ -146,4 +146,17 @@ class ApiController extends Controller
 
         return response()->json($books);
     }
+
+    public function search(string $search)
+    {
+        $books = Book::where('name', 'like', '%' . $search . '%')
+            ->orWhere('body', 'like', '%' . $search . '%')
+            ->get();
+
+        if ($books->isEmpty()) {
+            return response()->json(['message' => 'Book not found'], 404);
+        }
+
+        return response()->json($books);
+    }
 }
